@@ -19,6 +19,6 @@ class BuggyMovement : MonoBehaviour
   void Update()
   {
     var forward = transform.forward;
-    rigidbody.AddForce(transform.forward * moveSpeed);
+    rigidbody.AddForce(forward * moveSpeed);
   }
 }
