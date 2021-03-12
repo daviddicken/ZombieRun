@@ -8,10 +8,14 @@ public class BuggyController : MonoBehaviour
   private float m_verticalInput;
   private float m_steeringAngle;
 
-  public WheelCollider rearRightWheel, frontRightWheel;
-  public WheelCollider rearLeftWheel, frontLeftWheel ;
-  public Transform frontLeftTransform, frontRightTransform;
-  public Transform rearLeftTransform, rearRightTransform;
+  public WheelCollider rearRightWheel;
+  public WheelCollider frontRightWheel;
+  public WheelCollider rearLeftWheel;
+  public WheelCollider frontLeftWheel ;
+  public Transform frontLeftTransform;
+  public Transform frontRightTransform;
+  public Transform rearLeftTransform;
+  public Transform rearRightTransform;
   public float maxSteerAngle = 30;
   public float motorForce = 50;
 
@@ -19,7 +23,7 @@ public class BuggyController : MonoBehaviour
   public void GetInput()
   {
     m_horizontalInput = Input.GetAxis("Horizontal");
-    m_horizontalInput = Input.GetAxis("Vertical");
+    m_verticalInput = Input.GetAxis("Vertical");
   }
   private void Steer()
   {
@@ -37,7 +41,6 @@ public class BuggyController : MonoBehaviour
   }
   private void UpdateWheelPoses()
   {
-    //Switch rearRight and frontLeft wheels if an issue occures
     UpdateWheelPoses(frontLeftWheel, frontLeftTransform); 
     UpdateWheelPoses(frontRightWheel, frontRightTransform);
     UpdateWheelPoses(rearLeftWheel, rearLeftTransform);
