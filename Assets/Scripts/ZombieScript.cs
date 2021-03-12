@@ -16,7 +16,7 @@ public class ZombieScript : MonoBehaviour
 
     }
 
-    public float timeRemaining = 1;
+    public float timeRemaining = .1f;
     
     void Update()
     {
@@ -45,7 +45,7 @@ public class ZombieScript : MonoBehaviour
             float pointZ = Random.Range(10, 190);
 
             Instantiate(randomZombie, new Vector3(pointX, -1, pointZ), Quaternion.identity);
-            timeRemaining = 1; 
+            timeRemaining = .1f; 
         }
 
         

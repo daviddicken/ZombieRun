@@ -14,33 +14,36 @@ class BuggyMovement : MonoBehaviour
     rigidbody = GetComponent<Rigidbody>();
   }
 
-  // Update is called once per frame
-  void Update()
-  {    
-    if (Input.GetKey(KeyCode.UpArrow))
-    {
-      var direction = transform.forward;
-      rigidbody.AddForce(direction * moveSpeed);
-    }
 
-    if (Input.GetKey(KeyCode.DownArrow))
+    // Update is called once per frame
+    void Update()
     {
-      var direction = transform.forward * -1;
-      rigidbody.AddForce(direction * moveSpeed);
-    }
 
-    if (Input.GetKey(KeyCode.LeftArrow))
-    {
-      var direction = transform.right * -1;
-      rigidbody.AddForce(direction * moveSpeed);
-    }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            var direction = transform.forward;
+            rigidbody.AddForce(direction * moveSpeed);
+        }
 
-    if (Input.GetKey(KeyCode.RightArrow))
-    {
-      var direction = transform.right;
-      rigidbody.AddForce(direction * moveSpeed);
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            var direction = transform.forward * -1;
+            rigidbody.AddForce(direction * moveSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            var direction = transform.right * -1;
+            rigidbody.AddForce(direction * moveSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            var direction = transform.right;
+            rigidbody.AddForce(direction * moveSpeed);
+        }
+
     }
-  }
 
   //========================================
   //Vector3 GetInputTranslationDirection()
