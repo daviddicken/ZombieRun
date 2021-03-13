@@ -1,27 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ZombieController : MonoBehaviour
 {
-    public Animator animator;
-    public float moveSpeed = 0.5f;
+    private Animator anim;
+    public Transform Player;
+    int MoveSpeed = 7;
+    int MaxDist = 15;
+    int MinDist = 2;
+    
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+       
+    }
 
     // Update is called once per frame
     void Update()
     {
-        float move = Input.GetAxis("Vertical") * moveSpeed;
-
-        move *= Time.deltaTime;
-        transform.Translate(0, 0, move);
-
-        //if(move != 0)
+        if (Vector3.Distance(transform.position, Player.position) <= MaxDist && Vector3.Distance(transform.position, Player.position) >= MinDist)
+        {
+            transform.LookAt(Player);
+            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+            anim.Play("Base Layer.Z_Run");
+        }
+        //if (transform.rotation.eulerAngles.x < -25)// || transform.rotation.eulerAngles.z < -15)
         //{
-        //    animator.SetBool("isMove", false);
+        //    anim.Play("Base Layer.Z_FallingBack");
         //}
-        //else
+        //if (transform.rotation.eulerAngles.x > 25)// || transform.rotation.eulerAngles.z > 15)
         //{
-        //    animator.SetBool("isMove", true);
+        //    anim.Play("Base Layer.Z_FallingForward");
         //}
+
     }
-}
+}//end of class
+ //Quaternion.Euler().

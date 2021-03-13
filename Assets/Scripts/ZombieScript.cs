@@ -27,7 +27,7 @@ public class ZombieScript : MonoBehaviour
         else 
         {
             float rand = Random.Range(1, 3);
-            Debug.Log("random number: " + rand);
+           
             GameObject randomZombie = new GameObject();
             switch (rand) 
             {
@@ -44,7 +44,13 @@ public class ZombieScript : MonoBehaviour
             float pointX = Random.Range(-100, 100);
             float pointZ = Random.Range(10, 190);
 
-            Instantiate(randomZombie, new Vector3(pointX, -1, pointZ), Quaternion.identity);
+ 
+            rand = Random.Range(1, 350);
+            // Rotate zombies in different directions when spawning
+            Quaternion target = Quaternion.Euler(0, rand, 0);
+           
+            Instantiate(randomZombie, new Vector3(pointX, -1, pointZ), Quaternion.Slerp(transform.rotation, target,1f));
+
             timeRemaining = .1f; 
         }
 
